@@ -225,3 +225,66 @@ In this project, you will learn the basics of Javascript and apply those concept
     Currently, your code accesses the last element in the array with rows[2]. But you may not know how many elements are in an array when you want the last one.
 
     You can make use of the .length property of an array - this returns the number of elements in the array. To get the last element of any array, you can use the following syntax:
+
+        array[array.length - 1]
+
+    array.length returns the number of elements in the array. By subtracting 1, you get the index of the last element in the array. You can apply this same concept to your rows array.
+
+    `Update your rows[2] to dynamically access the last element in the rows array.`
+
+23. Step 23
+
+    For now, remove your first console log and your rows[rows.length - 1] assignment. Leave the second rows log statement for later.
+
+24. Step 24
+
+    In the last few steps, you learned all about working with arrays. Take a moment to review what you have learned.
+
+    `Start by declaring a cities variable and initializing it as an array of the strings "London", "New York", and "Mumbai". Then log that variable to the console. After logging, change the last element of cities to the string "Mexico City", then log the cities variable again. `
+
+25. Step 25
+
+    Now you are ready to move onto the next set of array lessons.
+
+    Remove all of your code from the previous step.
+
+26. Step 26
+
+    A method in JavaScript is a function that's associated with certain values or objects.
+
+        An example you've already encountered is the .log() method, which is part of the console object.
+
+    Arrays have their own methods, and the first you will explore is the .push() method.
+    This allows you to <strong>"push" a value to the end of an array.</strong> Here is an example to add the number 12 to the end of an array:
+
+            array.push(12);
+
+    `Use .push() to add the string "freeCodeCamp" to the end of your rows array. Add this code before your console.log so you can see the change you made to your array`
+
+27. Step 27
+
+    Another method essential for this project is the <b>.pop() method. It removes the last element from an array and <i>returns</i> that element.</b>
+
+    When a method returns a value, you can think of it as giving the value back to you, making it available for use in other parts of your code.
+
+    `Create a new variable called popped and assign it the result of rows.pop(). Then, log popped to the console.`
+
+28. Step 28
+    You should have seen "freeCodeCamp" printed to the console. This is because .pop() returns the value that was removed from the array - and you pushed "freeCodeCamp" to the end of the array earlier.
+
+    But what does .push() return?
+    ` Assign your existing rows.push() to a new pushed variable, and log it.`
+
+29. Step 29
+
+    Were you expecting to see 4 in the console? .push() returns the new length of the array, after adding the value you give it.
+
+    <i>It is important to be aware of what values a method returns. </i>
+
+    ` Take some time to experiment with .push() and .pop(). When you are ready, remove all of your .push() and .pop() calls, and your console.log statements.`
+
+30. Step 30
+
+    Change your rows declaration to be assigned an empty array again.
+
+    Also, `change your 'Hello' string to use double quotes again. Generally, it does not matter which of the two you prefer, but you will want to be consistent in that choice throughout your project`.
