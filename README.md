@@ -288,3 +288,142 @@ In this project, you will learn the basics of Javascript and apply those concept
     Change your rows declaration to be assigned an empty array again.
 
     Also, `change your 'Hello' string to use double quotes again. Generally, it does not matter which of the two you prefer, but you will want to be consistent in that choice throughout your project`.
+
+31. Step 31
+
+    Declaring a variable with the let keyword allows it to be reassigned. This means you could change character later to be a completely different value.
+
+    For this project, you will not want to change these variable values. So instead, you should use const to declare them. const variables are special.
+
+    First, a const variable cannot be reassigned like a let variable. This code would throw an error:
+
+        a const variable cannot be reassigned like a let variable.
+
+        A const variable also cannot be uninitialized.
+
+    ` Replace your let keywords with const.`
+
+32. Step 32
+
+    1. You are now ready to start building your pyramid generator.
+    2. Your <b>character</b> variable will serve as the building block for the pyramid.
+
+    `"Hello" might not work very well for that. Change the value of character to be the hash character "#"`
+
+33. Step 33
+
+    1. To generate a pyramid, you will need to create multiple rows.
+    2. When you have to perform a task repeatedly until a condition is met, you will use a loop.
+    3. You are going to start with a basic for loop. for loops.
+
+    `In the upcoming steps, you'll explore each component of a loop in detail. For now, construct a for loop that includes the terms "iterator", "condition", and "iteration" for the three components. Keep the loop body, the section within the curly braces {}, empty.`
+
+34. Step 34
+
+    Your loop now needs a proper iterator. <i>The iterator is a variable you can declare specifically in your for loop to control how the loop iterates or goes through your logic.</i>
+
+    - It is a common convention to use i as your iterator variable in a loop.
+    - A for loop allows you to declare this in the parentheses ().
+
+    `Replace the string "iterator" with a let declaration for the variable i. Assign it the value 0 to start. This will give the i variable the value 0 the first time your loop runs.`
+
+35. Step 35
+
+    - The condition of a for loop tells the loop how many times it should iterate. When the condition becomes false, the loop will stop.
+
+    - In JavaScript, a Boolean value can be either true or false. These are not strings
+    - For now, you will use the less than operator (<). This allows you to check if the value on the left is less than the value on the right
+
+    `Replace your "condition" string with a condition to check if "i" is less than count.`
+
+36. Step 36
+
+    - Your iteration statement will tell your loop what to do with the iterator after each run.
+
+    - When you reassign a variable, you can use the variable to reference the previous value before the reassignment.
+      - This allows you to do things like add three to an existing number. For example, bees = bees + 3 would increase the value of bees by three.
+
+    `Use that syntax to replace your "iteration" string with a reassignment statement that increases i by one.  `
+
+37. Step 37
+
+    Your loop should now run eight times.
+    ` Inside the body of the loop, print the value of the i iterator and see what happens.`
+
+38. Step 38
+
+    You should see the numbers zero through seven printed in your console, one per line. This will serve as the foundation for generating your pyramid.
+
+    `Replace your log statement with a statement to push i to your rows array.`
+
+    If you print rows in console you will get below output
+
+        0
+        0, 1;
+        0, 1, 2;
+        0, 1, 2, 3;
+        0, 1, 2, 3, 4;
+        0, 1, 2, 3, 4, 5;
+        0, 1, 2, 3, 4, 5, 6;
+        0, 1, 2, 3, 4, 5, 6, 7;
+        0, 1, 2, 3, 4, 5, 6, 7, 8;
+
+39. Step 39
+
+    Unfortunately, now you cannot see what your loop is doing.
+
+    ` Use let to declare a result variable, and assign it an empty string. An empty string is represented by quotation marks with nothing between them, such as "".`
+
+40. Step 40
+
+    Add a log statement to print the value of result. Depending on which console you use, you may not see anything printed.
+
+41. Step 41
+
+    To manipulate the result string, you will use a different type of loop. Specifically, <i>a for...of loop, which iterates over each item in an iterable object and temporarily assigns it to a variable.</i>
+
+        The syntax of for... of loop
+            for (const value of iterable) {
+
+            }
+
+    - Note that you can use <b>const because the variable only exists for a single iteration, not during the entire loop.</b>
+
+`Create a for...of loop to iterate through your rows array, assigning each value to a row variable. `
+
+42. Step 42
+
+    Remember in your previous loop that you used the addition operator + to increase the value of i by 1.
+
+    <b>You can do a similar thing with a string value, by appending a new string to an existing string. For example, hello = hello + " World"; would add the string " World" to the existing string stored in the hello variable. This is called concatenation.</b>
+
+    `In your for...of loop, use the addition operator to concatenate the row value to the result value.`
+
+43. Step 43
+
+    Now all of your numbers are appearing on the same line. This will not work for creating a pyramid.
+
+    - You will need to add a new line to each row. However, pressing the return key to insert a line break between quotes in JavaScript will result in a parsing error.
+
+    Instead, you need to use the special escape sequence \n, which is interpreted as a new line when the string is logged.
+
+        ex:  lineOne = lineOne + "\n" + lineTwo;
+
+    `Use a second addition operator to append a new line after the result and row values.`
+
+44. Step 44
+
+    Printing numbers won't result in a visually appealing pyramid. Now that you're outputting the formatted content of your rows array, it's time to update your original loop.
+
+    `Instead of pushing i to the array, push the value of your character variable.`
+
+45. Step 45
+
+    Now you have a series of # characters, but the pyramid shape is still missing. Fortunately, the i variable represents the current "row" number in your loop,<u> enabling you to use it for crafting a pyramid-like structure.</u>
+
+    - To achieve this, you will use the <b>.repeat()</b> method available to strings.
+    - This method accepts a number as an argument, specifying the number of times to repeat the target string.
+      const activity = "Code! ";
+      activity.repeat(3);
+
+    `Use the .repeat() method on your character, and give it i for the number.`
