@@ -427,3 +427,134 @@ In this project, you will learn the basics of Javascript and apply those concept
       activity.repeat(3);
 
     `Use the .repeat() method on your character, and give it i for the number.`
+
+46. Step 46
+
+    You're getting closer! At this point, you're encountering what's known as an off-by-one error, a frequent problem in zero-based indexing languages like JavaScript.
+
+    <b>The first index of your rows array is 0, <u>which is why you start your for loop with i = 0.</u></b> But repeating a string zero times results in nothing to print.
+
+    To fix this, add 1 to the value of i in your .repeat() call. Do not assign it back to i like you did in your loop conditions.
+
+47. Step 47
+
+    The logic for formatting this pyramid is likely going to get complicated, which means it's a great time to extract that code into a function.
+
+    A function is a block of code that can be reused throughout your application.
+
+    - The function keyword tells JavaScript that the name variable is going to be a function.
+    - Parameter is a variable that represents a value that is passed into the function when it is used.
+    - A function may have as many, or as few, parameters as you'd like.
+    - Like a for loop, the space between the curly braces is the function body.
+
+      `Declare a padRow function. Do not create any parameter variables yet. The function body should be empty. Remember that you need to use camel case for your naming convention.`
+
+48. Step 48
+
+    - In order to use a function, you need to call it.
+    - A function call tells your application to run the code from the function wherever you choose to call it.
+    - The syntax for a function call is the function name followed by parentheses.
+      `Call your padRow function.`
+
+49. Step 49
+
+    - You are calling your padRow function, but not doing anything with that function call.
+    - All functions in JavaScript return a value, meaning they provide the defined result of calling them for you to use elsewhere.
+
+    `To see the result of calling your padRow function, declare a call variable and assign your existing padRow call to that variable.`
+
+50. Step 50
+
+    Now add a log statement to print the value of your call variable.
+
+51. Step 51
+
+    Your call variable has an undefined value, even though you defined it! This is because your padRow function does not currently return a value. By default, functions return undefined as their value.
+
+    In order to return something else, you need to use the return keyword.
+
+    `Use the return keyword to have your function return the string "Hello!".`
+
+52. Step 52
+
+    When you have a value that is explicitly written in your code, like the "Hello!" string in your function, it is considered to be hard-coded. Hard-coding a value inside a function might not make it as reusable as you'd like.
+
+    Instead, you can define parameters for the function. <u>Parameters are special variables that are given a value when you call the function, and can be used in your function to dynamically change the result of the function's code.</u>
+
+    To add a parameter to your function, you need to add a variable name inside the parentheses.
+
+    `name sounds like a useful parameter, so go ahead and add it to your padRow function.`
+
+53. Step 53
+
+    A function does not have to return a hard-coded value. It can return the value stored in a variable. Parameters are special variables for a function, so they can also be returned.
+
+    `Change your padRow function to return the name parameter directly.`
+
+54. Step 54
+
+    If you open your console again, you'll see that your padRow function is returning undefined, even though you defined a return value! This is because parameters need to be given a value when you call the function.
+
+    - When you pass a value to a function call, that value is referred to as an argument.
+
+    `Pass your own name as the argument for the name parameter in your padRow call. Remember that your name is a string, so you'll need to use quotes. `
+
+55. Step 55
+
+    Before moving on, take a moment to review how functions work.
+
+    Declare a function named addTwoNumbers. This function should take two arguments and return the sum of those two arguments.
+
+    `Declare a sum variable and assign it the value of calling your addTwoNumbers function with 5 and 10 as the arguments. Log the sum variable to the console.`
+
+56. Step 56
+
+    With that quick review complete, you should remove your addTwoNumbers function, sum variable, and log statement.
+
+57. Step 57
+
+        Variables in JavaScript are available in a specific scope.<u> In other words, where a variable is declared determines where in your code it can be used.</u>
+
+        - The first scope is the global scope. Variables that are declared outside of any "block" like a function or for loop are in the global scope. Your character, count, and rows variables are all in the global scope.
+
+        - When a variable is in the global scope, a function can access it in its definition.
+
+                const title = "Professor ";
+                function demo(name) {
+                    return title + name;
+                }
+                demo("Naomi")
+
+    `Update your padRow function to return the value of concatenating your character variable to the beginning of the name parameter.`
+
+58. Step 58
+
+    - Variables can also be declared inside a function. These variables are considered to be in the local scope, or block scope.
+
+    - A variable declared inside a function can only be used inside that function. If you try to access it outside of the function, you get a reference error.
+
+59. Step 59
+
+    - Values returned out of a function are used by calling the function.
+
+    - You can use the function call directly as the value it returns, or capture the returned value in a variable.
+
+    - This way, you can use the value assigned to a locally scoped variable, outside the function it was created in.
+
+            function getName() {
+            const name = "Camper cat";
+            return name;
+            }
+
+            console.log(getName()); // "Camper cat"
+
+            const capturedReturnValue = getName();
+            console.log(capturedReturnValue); // "Camper cat"
+
+            console.log(name); // reference error
+
+60. Step 60
+
+    - Below the return statement, log the string "This works!" to the console.
+
+    - An important thing to know about the return keyword is that it does not just define a value to be returned from your function, it also stops the execution of your code inside a function or a block statement. This means any code after a return statement will not run.
