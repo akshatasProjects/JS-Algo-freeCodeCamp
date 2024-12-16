@@ -558,3 +558,97 @@ In this project, you will learn the basics of Javascript and apply those concept
     - Below the return statement, log the string "This works!" to the console.
 
     - An important thing to know about the return keyword is that it does not just define a value to be returned from your function, it also stops the execution of your code inside a function or a block statement. This means any code after a return statement will not run.
+
+61. Step 61
+
+        `Now your call variable has the value "Testing". But your function is no longer using the name parameter.
+
+    Remove the name parameter from your function declaration, then remove your "CamperChan" string from the padRow call.
+    Also, remove both console.log from the padRow function.`
+
+62. Step 62
+
+    - Because your function was no longer using the parameter, changing the argument did not affect it.
+
+    `Go ahead and remove the test declaration and return statement from your padRow function, so the function is empty again.`
+
+63. Step 63
+
+    - As expected, your function now returns undefined again. `Your call variable is not necessary any more, so remove the call declaration and the console.log for the call variable.`
+
+64. Step 64
+
+    In order to know how to format a row, your padRow function will need to know which row number you are on, and how many rows in total are being generated.
+
+    `The best way to do this is by creating function parameters for them. Give your padRow function a rowNumber and rowCount parameter. Multiple parameters are separated by a comma`
+
+65. Step 65
+
+    - Remember in an earlier step, you learned about return values. A function can return a value for your application to consume separately.
+
+    - In a function, the return keyword is used to specify a return value.
+
+    - `Use the return keyword to return the value of the character variable, repeated rowNumber times.`
+
+66. Step 66
+
+    A function call allows you to actually use a function. You may not have been aware of it, but the methods like .push() that you have been using have been function calls.
+
+    - A function is called by referencing the function's name, and adding ()
+
+    `Replace the character.repeat(i + 1) in your .push() call with a function call for your padRow function.`
+
+67. Step 67
+
+    Your padRow function has two parameters which you defined. Values are provided to those parameters when a function is called.
+
+    - The values you provide to a function call are referred to as arguments, and you pass arguments to a function call.
+
+    - `Pass i + 1 and count as the arguments to your padRow call. Like parameters, arguments are separated by a comma.`
+
+68. Step 68
+
+    You should now see the same bunch of characters in your console. Your padRow function is doing the exact same thing you were doing earlier, but now it's in a reusable section of its own.
+
+    `Use the addition operator to concatenate a single space " " to the beginning and end of your repeated character string.`
+
+69. Step 69
+
+    Now it is time for a bit of math. Consider a three-row pyramid. If we want it centered, it would look something like:
+
+         ··#··
+         ·###·
+         #####
+
+    - Empty spaces have been replaced with interpuncts, or middle dots, for readability.
+    - If you extrapolate the pattern, you can see that the spaces at the beginning and end of a row follow a pattern.
+
+    - `Update your blank space strings to be repeated rowCount - rowNumber times.`
+
+70. Step 70
+
+    You can pass full expressions as an argument. The function will receive the result of evaluating that expression. For example, these two function calls would yield the same result:
+
+        test(2 * 3 + 1);
+        test(7);
+
+    Update the character value to be repeated 2 \* rowNumber - 1 times.
+    Open up the console again to see the updated result.
+
+71. Step 71
+    Your pyramid generator now functions as expected. But this is an excellent opportunity to further explore the code you have written.
+
+The addition operator is not the only way to add values to a variable. The addition assignment operator can be used as shorthand to mean "take the original value of the variable, add this value, and assign the result back to the variable."
+
+`Update your iteration statement in the for loop to use addition assignment.`
+
+72. Step 72
+
+    Because you are only increasing i by 1, you can use the increment operator ++. This operator increases the value of a variable by 1, updating the assignment for that variable.
+
+`Replace your addition assignment with the increment operator for your loop iteration.`
+
+73. Step 73
+    Rather than having to pass i + 1 to your padRow call, you could instead start your loop at 1. This would allow you to create a one-indexed loop.
+
+Update your iterator to start at 1 instead of 0.
