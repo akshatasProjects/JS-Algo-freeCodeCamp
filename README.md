@@ -651,4 +651,127 @@ The addition operator is not the only way to add values to a variable. The addit
 73. Step 73
     Rather than having to pass i + 1 to your padRow call, you could instead start your loop at 1. This would allow you to create a one-indexed loop.
 
-Update your iterator to start at 1 instead of 0.
+    `Update your iterator to start at 1 instead of 0.`
+
+74. Step 74
+
+    The pyramid looks a little funny now. Because you are starting the loop at 1 instead of 0, you do not need to add one to i when you pass it to padRow.
+
+` Update the first argument of your padRow call to be i.`
+
+75. Step 75
+
+    Unfortunately, now the bottom of the pyramid has disappeared. This is because you have created another off-by-one error.
+
+    our original loop went for i values from 0 to 7, because count is 8 and your condition requires i to be less than count. Your loop is now running for i values from 1 to 7.
+
+    Your loop needs to be updated to run when i is 8, too. Looking at your logic, this means your loop should run when i is less than or equal to count. You can use the less than or equal to operator <= for this.
+
+    ` Update your loop condition to run while i is less than or equal to count.`
+
+76. Step 76
+
+    Comments can be helpful for explaining why your code takes a certain approach, or leaving to-do notes for your future self.
+
+    In JavaScript, you can use // to leave a single-line comment in your code.
+
+    `Add a single-line comment above your for loop to remind yourself to change the code to a different kind of loop.`
+
+77. Step 77
+
+    JavaScript also has support for multi-line comments. A multi-line comment starts with /_ and ends with _/.
+
+    Unlike a single-line comment, a multi-line comment will encapsulate multiple lines.
+
+    ` Use /* and */ to turn your current for loop, including the body, into a multi-line comment.`
+
+78. Step 78
+
+    Your pyramid has disappeared again. That's okay - that is to be expected.
+
+    - Before you create your new loop, you need to learn about if statements. An if statement allows you to run a block of code only when a condition is met.
+
+    `Create an if statement with the boolean true as the condition. In the body, print the string "Condition is true".`
+
+79. Step 79
+
+    You'll see the string printed in the console, because true is in fact true.
+
+    `Change the condition of your if statement to the boolean false.`
+
+80. Step 80
+    Now the string is no longer printing, because false is not true. But what about other values?
+
+    `Try changing the condition to the string "false".`
+
+81. Step 81
+
+    The text has appeared again! This is because "false" is a string, which when evaluated to a boolean becomes true. This means "false" is a truthy value.
+
+    - <i>A truthy value is a value that is considered true when evaluated as a boolean.</i> Most of the values you encounter in JavaScript will be truthy.
+
+    - A falsy value is the opposite - a value considered false when evaluated as a boolean. JavaScript has a defined list of falsy values. Some of them include <b>false, 0, "", null, undefined, and NaN. </b>
+
+82. Step 82
+
+    The text is gone again! Empty strings evaluate to false, making them a falsy value. You will learn more about truthy and falsy values in future projects.
+
+    - In addition to if statements, JavaScript also has else if statements. else if statements allow you to check multiple conditions in a single block of code.
+
+    - If the first condition is false, JavaScript will check the next condition in the chain. If the second condition is false, JavaScript will check the third condition, and so on.
+
+    `Below your if statement, add an else if statement that checks if 5 is less than 10. Then inside the body of the else if statement, log the string "5 is less than 10" to the console.`
+
+83. Step 83
+
+    Sometimes you will want to run different code when all of the if...else if conditions are false. You can do this by adding an else block.
+
+    - <u>An else block will only evaluate if the conditions in the if and else if blocks are not met.</u>
+
+84. Step 84
+
+    Now that you have practiced working with if...else if...else statements, you can remove them from your code.
+
+    `Once you complete that, use let to declare a continueLoop variable and assign it the boolean false. Then use let to declare a done variable and assign it the value 0.`
+
+85. Step 85
+
+    A while loop will run over and over again until the condition specified is no longer true.
+
+    - `Use that syntax to declare a while loop with continueLoop as the condition. The body should be empty.`
+
+86. Step 86
+
+    Right now, if you change continueLoop to true, your while loop will run forever. This is called an infinite loop, and you should be careful to avoid these. An infinite loop can lock up your system, requiring a full restart to escape.
+
+    `To avoid this, start by using the increment operator to increase the value of the done variable inside your loop. `
+
+87. Step 87
+
+    The equality operator == is used to check if two values are equal. To compare two values, you'd use a statement like value == 8.
+
+    Below done++ inside your loop, add an if statement. The statement should check if done is equal to count using the equality operator.
+
+88. Step 88
+
+    The equality operator can lead to some strange behavior in JavaScript. For example, "0" == 0 is true, even though one is a string and one is a number.
+
+    The strict equality operator === is used to check if two values are equal and share the same type. As a general rule, this is the equality operator you should always use. With the strict equality operator, "0" === 0 becomes false, because while they might have the same value of zero, they are not of the same type.
+
+    Update your done == count condition to use the strict equality operator.
+
+89. Step 89
+
+    When done has reached the value of count, we want the loop to stop executing.
+
+    Inside your if body, assign the boolean false to your continueLoop variable.
+
+90. Step 90
+
+    To make your pyramid generate again, push the result of calling padRow with done and count as the arguments to your rows array, similar to what you did in your first loop.
+
+91. Step 91
+
+    The strict inequality operator !== allows you to check if two values are not equal, or do not have the same type. The syntax is similar to the equality operator: value !== 4.
+
+    Update your while loop condition to check if done is not equal to count.
