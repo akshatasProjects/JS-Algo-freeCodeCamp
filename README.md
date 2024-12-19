@@ -775,3 +775,132 @@ The addition operator is not the only way to add values to a variable. The addit
     The strict inequality operator !== allows you to check if two values are not equal, or do not have the same type. The syntax is similar to the equality operator: value !== 4.
 
     Update your while loop condition to check if done is not equal to count.
+
+92. Step 92
+
+    Since you have moved the comparison into the while
+    condition, you can remove your entire if statement.
+
+93. Step 93
+
+    Your loop is no longer relying on the continueLoop variable. This makes the variable an unused declaration. Generally, you want to avoid unused declarations to prevent future confusion.
+
+    Remove your continueLoop variable.
+
+94. Step 94
+
+    Your pyramid generator is still working. However, it could be possible to end up with an infinite loop again.
+
+    Because you are only checking if done is not equal to count, if done were to be larger than count your loop would go on forever.
+
+    ` Update your loop's condition to check if done is less than or equal to count.`
+
+95. Step 95
+
+    Using done to track the number of rows that have been generated is functional, but you can actually clean up the logic a bit further.
+
+    - Arrays have a special length property that allows you to see how many values, or elements, are in the array. You would access this property using syntax like myArray.length.
+
+    - Note that rows.length in the padRow call would give you an off-by-one error, because done is incremented before the call.
+
+    `Update your condition to check if rows.length is less than count.`
+
+96. Step 96
+
+    Replace the done reference in your padRow call with rows.length + 1.
+
+97. step 97
+
+    Now you no longer need your done variable. Remove the increment operation from your loop, and the variable declaration for done.
+
+98. Step 99
+
+    What if you made your pyramid upside-down, or inverted? Time to try it out!
+
+    Start by creating a new for loop. Declare your iterator i and assign it the value of count, then use the boolean false for your condition and iteration statements.
+
+99. Step 100
+
+    Because you are going to loop in the opposite direction, your loop needs to run while i is greater than 0. You can use the greater than operator > for this.
+
+    `Set your loop's condition to run when i is greater than 0.`
+
+100.  Step 103
+
+      Just like addition, there are different operators you can use for subtraction. The subtraction assignment operator -= subtracts the given value from the current variable value, then assigns the result back to the variable.
+
+      ` Replace your iteration statement with the correct statement using the subtraction assignment operator.`
+
+101.  Step 104
+
+      Because you are only subtracting one from i, you can use the decrement operator --.
+
+      ` Replace your subtraction assignment with the decrement operator.`
+
+102.  Step 105
+
+      Use a multi-line comment to comment out this loop as well, to prepare for the next approach.
+
+103.  Step 106
+
+      You can actually build the inverted pyramid without needing to loop "backwards" like you did.
+
+      `To do this, you'll need to learn a couple of new array methods. Start by using const to declare a numbers variable. Assign it an array with the elements 1, 2, and 3. Then log the numbers array.`
+
+104.  Step 107
+
+      - The .unshift() method of an array allows you to add a value to the beginning of the array, unlike .push() which adds the value at the end of the array. .unshift() returns the new length of the array it was called on.
+
+      - `Use const to declare an unshifted variable, and assign it the result of calling .unshift() on your numbers array.`
+
+      - `Pass 5 as the argument. Then print your unshifted variable.`
+
+105.  Step 108
+
+      Arrays also have a .shift() method. This will remove the first element of the array, unlike .pop() which removes the last element.
+
+106.  Step 109
+
+      Sometimes you may wish to bring back previous code that you commented out. You can do so by removing the /_ and _/ around that code. This is called uncommenting.
+
+107.  Step 110
+
+      Your pyramid is no longer inverted. This is because you are adding new rows to the end of the array.
+
+      ` Update your loop body to add new rows to the beginning of the array.(unshift)`
+
+108.  Step 112
+
+      What if you had a way to toggle between an inverted pyramid and a standard pyramid?
+
+      ` Start by declaring an inverted variable, and assigning it the value true. You are not changing this variable in your code, but you will need to use let so our tests can modify it later.`
+
+109.  Step 113
+
+      Use an if statement to check if inverted is true. Remember that you do not need to use an equality operator here.
+
+110.  Step 114
+
+      Now move your .unshift() call into your if block.
+
+111.  Step 115
+
+      If your pyramid is not inverted, then you will want to have an else block that builds the pyramid in the normal order.
+
+
+    `Add an else block to your if block. `
+
+116. Step 117
+     Your pyramid generator is now in a finished state, with more functionality than you originally planned! The next step is to clean up your code.
+
+
+    Remove all comments, both single- and multi-line, from your code.
+
+118. Step 118
+
+
+    Nice work! Experiment with different values for your character, count, and inverted variables.
+
+    When you are ready to move on to your next project, set character to "!", count to 10, and inverted to false to continue.
+
+    Congratulations on completing your first JavaScript project!
