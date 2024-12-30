@@ -95,3 +95,25 @@ https://www.geeksforgeeks.org/what-is-readme-md-file/#google_vignette
   - The average is calculated by adding up all the scores and dividing by the total number of scores.
 
         average = sum of all scores / total number of scores
+
+  - A couple of function calls have been provided for you so you can test out your code.
+
+  * Tips
+
+  - You can use a loop to iterate over the scores array and add up all the scores.
+  - You can use the length property to get the total number of scores.
+
+4. Step 4
+
+   Now that the teacher has all of the information they need, they want to be able to message the student with the results.
+
+Complete the studentMsg function with totalScores and studentScore for parameters. The function should return a string representing a message to the student.
+EX: Class average: average-goes-here. Your grade: grade-goes-here. You passed the course.
+Class average: average-goes-here. Your grade: grade-goes-here. You failed the course.
+
+Tips
+
+- Use the getAverage function to get the class average.
+- Use the getGrade function to get the student's grade.
+- Use string concatenation (+) to build the message.
+- Be careful with the punctuation and spaces in the message.
