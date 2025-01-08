@@ -171,3 +171,75 @@ In this practice project, you'll learn fundamental programming concepts in JavaS
 17. Step 19
 
     Similar to your #stats element, your #monsterStats element needs two span elements. Give them the class stat and give the first element the text Monster Name: and the second the text Health: . After the text in each, add a strong element with an empty nested span element. Give the first inner span element an id of monsterName and the second inner span element an id of monsterHealth.
+
+18. Step 21
+    Now we need some quick styling. Start by giving the body a background-color set to #0a0a23.
+
+19. Step 22
+    Give the #text element a background-color of #0a0a23, a color of #ffffff, and 10px of padding on all sides.
+
+20. Step 23
+    Give your #game a maximum width of 500px and a maximum height of 400px. Set the background-color to #ffffff and the color to #ffffff.
+
+    Use margins to center it by setting the top margin to 30px, bottom margin to 0px, and the left and right margin to auto.
+
+    Finally, give it 10px of padding on all four sides.
+
+21. Step 24
+
+    Using a selector list (selector1, selector2) give both your #controls and #stats elements a border of 1px solid #0a0a23, a #0a0a23 text color, and 5px of padding.
+
+22. Step 25
+
+    Give your #monsterStats element the same border and padding as your #stats element. Set its color to #ffffff and give it a #c70d0d background.
+
+23. Step 26
+
+    For now, hide your #monsterStats element with the display property. Do not change any of the other styling.
+
+24. Step 27
+    Next, give your .stat elements a padding-right of 10px.
+
+25. Step 28
+
+    Finally, you will need to add some styles for your buttons. Start by setting the cursor property to pointer. Then set the text color to #0a0a23 and the background-color to #feac32.
+
+    Then set the background-image property to linear-gradient(#fecc4c, #ffac33). Lastly, set the border to 3px solid #feac32.
+
+26. Step 29
+    Just like you did with the buttons, create variables for the following ids and use querySelector() to give them the element as a value:
+
+    text, xpText, healthText, goldText, monsterStats, and monsterName.
+
+    Remember to declare these with the const keyword, and name the variables to match the ids.
+
+27. Step 31
+    Create an empty function named goStore.
+
+28. Step 32
+    For now, make your goStore function output the message "Going to store." to the console
+
+29. Step 36
+    button1 represents your first button element. These elements have a special property called onclick, which you can use to determine what happens when someone clicks that button.
+
+    You can access properties in JavaScript a couple of different ways. The first is with dot notation. Here is an example of using dot notation to set the onclick property of a button to a function reference.
+
+    Use dot notation to set the onclick property of your button1 to the function reference of goStore. Note that button1 is already declared, so you don't need to use let or const.
+
+30. Step 37
+    Using the same syntax, set the onclick properties of button2 and button3 to goCave and fightDragon respectively.
+
+    Once you have done that, open your console and try clicking the buttons on your project.
+
+31. Step 38
+    The innerText property controls the text that appears in an HTML element. For example:
+
+    When a player clicks your Go to store button, you want to change the buttons and text. Remove the code inside the goStore function and add a line that updates the text of button1 to say "Buy 10 health (10 gold)".
+
+32. Step 39
+    Now, add a line that updates the text of button2 to say "Buy weapon (30 gold)" and update the text of button3 to say "Go to town square"
+
+33. Step 40
+    You will also need to update the functions that run when the buttons are clicked again.
+
+    In your goStore() function, update the onclick property for each button to run buyHealth, buyWeapon, and goTown, respectively.
