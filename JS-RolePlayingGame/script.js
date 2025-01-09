@@ -34,8 +34,7 @@ const locations  = [
     text:"You enter the store."
   }
 
-
-]
+];
 
 function update(location){
   button1.innerText = "Go to store";
