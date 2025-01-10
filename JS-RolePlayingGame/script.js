@@ -18,100 +18,81 @@ const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
+const weapons = [];
 
-const locations  = [
+//------------------- location Object
+const locations = [
   {
-    name:"town square", 
-   "button text":["Go to store","Go to cave","Fight dragon"],
-   "button functions":[goStore, goCave, fightDragon],
-   text: "You are in the town square. You see a sign that says \"Store\"."
+    name: "town square",
+    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    "button functions": [goStore, goCave, fightDragon],
+    text: 'You are in the town square. You see a sign that says "Store".',
   },
 
   {
-    name : "store",
-    "button text":["Buy 10 health (10 gold)","Buy weapon (30 gold)","Go to town square"],
-    "button functions":[buyHealth, buyWeapon, goTown],
-    text:"You enter the store."
-  }
+    name: "store",
+    "button text": [
+      "Buy 10 health (10 gold)",
+      "Buy weapon (30 gold)",
+      "Go to town square",
+    ],
+    "button functions": [buyHealth, buyWeapon, goTown],
+    text: "You enter the store.",
+  },
 
+  {
+    name: "cave",
+    "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
+    "button functions": [fightSlime, fightBeast, goTown],
+    text: "You enter the cave. You see some monsters.",
+  },
 ];
 
-function update(location){
-  button1.innerText = "Go to store";
-  button2.innerText = "Go to cave";
-  button3.innerText = "Fight dragon";
-  button1.onclick = goStore;
-  button2.onclick = goCave;
-  button3.onclick = fightDragon;
-  text.innerText = "You are in the town square. You see a sign that says \"Store\".";
+// Update function takes location object as parameter
+function update(location) {
+  button1.innerText = location["button text"][0];
+  button2.innerText = location["button text"][1];
+  button3.innerText = location["button text"][2];
+  button1.onclick = location["button functions"][0];
+  button2.onclick = location["button functions"][1];
+  button3.onclick = location["button functions"][2];
+  text.innerText = location.text;
 }
 
-
-
-function goTown(){
-  // button1.innerText = "Go to store";
-  // button2.innerText = "Go to cave";
-  // button3.innerText = "Fight dragon";
-  // button1.onclick = goStore;
-  // button2.onclick = goCave;
-  // button3.onclick = fightDragon;
-  // text.innerText = "You are in the town square. You see a sign that says \"Store\".";
+// update function takes first array from location obj
+function goTown() {
+  update(locations[0]); // accessing the first array of locations using bracket notation.
 }
 
-// Create an empty function named goStore.
-
+// update function takes 2 array from location obj
 function goStore() {
-  // step 32
-  // console.log("Going to store.");
-  
-  //step39
-  /*button1.innerText = "Buy 10 health (10 gold)";
-  button2.innerText = "Buy weapon (30 gold)"
-  button3.innerText = "Go to town square"*/
-
-  //Step40
-  
-
-  //STEP 41
-  text.innerText = "You enter the store."
+  update(locations[1]);
 }
 
-//--------------step33
+// update function takes 3 array from location obj
 function goCave() {
-  
+  update(locations[2]);
 }
+function fightDragon() {}
 
-//-----------------Step34
-function fightDragon() {
-  // console.log("Fighting dragon.");
-  
-}
-
-// ---------------Step 35---------------------
-// initialize buttons
-Go to town square
-// ---------------Step 36---------------------
 button1.onclick = goStore;
-//-----------------Step 37-------------------------
 button2.onclick = goCave;
 button3.onclick = fightDragon;
 
-//------------------Step 38-----------------------------
-// add line to function goStore Buy 10 health (10 gold)
+function buyHealth() {
+  // check if user has enough gold to buy health.
+  if (gold >= 10) {
+    gold -= 10;
+    health += 10;
+    goldText.innerText = gold;
+    healthText.innerText = health;
+  } else {
+    text.innerText = "You do not have enough gold to buy health.";
+  }
+}
+function buyWeapon() {}
 
-// Step 39
-// Now, add a line that updates the text of
-// button2 to say "Buy weapon (30 gold)"
-// and update the text of button3 to say ""
+function fightSlime() {}
+function fightBeast() {}
 
-
-/* STEP 42
-Create three new empty 
-functions called buyHealth, buyWeapon, and goTown.
-
-*/
-function buyHealth(){}
-function buyWeapon(){}
-
-
-// LEFT AT STEP 60
+// LEFT at 81
