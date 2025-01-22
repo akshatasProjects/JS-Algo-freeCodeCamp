@@ -8,5 +8,18 @@ let isError = false;
 
 function cleanInputString(str) {
   /* Note that you need to use the backslash \ character to escape the + symbol because it has a special meaning in regular expressions */
-  const regex = /\+-/;
+  const regex = /[+-\s]/g;
+  return str.replace(regex, "");
 }
+
+// to find exponential numbers or valid or not
+function isInvalidInput(str) {
+  const regex = /\d+ e\d+/i;
+  return str.match(regex);
+}
+
+function addEntry() {
+  let targetId = "#" + entryDropdown.ariaValueMax;
+}
+
+// LEFT at 41

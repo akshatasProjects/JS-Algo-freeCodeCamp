@@ -143,3 +143,108 @@ Step 20
 The current pattern will match the exact text "hello", which is not the desired behavior. Instead, you want to search for +, -, or spaces. Replace the pattern in your regex variable with \+- to match plus and minus characters.
 
 - Note that you need to use the backslash \ character to escape the + symbol because it has a special meaning in regular expressions.
+
+---
+
+Step 21
+
+In regex, shorthand character classes allow you to match specific characters without having to write those characters in your pattern. Shorthand character classes are preceded with a backslash (\).
+
+- The character class \s will match any whitespace character. Add this to your regex pattern. regex= /\+-\s/
+
+Step 22
+
+Your current pattern won't work just yet. /+-\s/ looks for +, -, and a space in order. This would match +- hello but would not match +hello.
+
+To tell the pattern to match each of these characters individually, you need to turn them into a character class.
+
+      - This is done by wrapping the characters you want to match in brackets. For example, this pattern will match the characters h, e, l, or o:
+      const regex = /[helo]/;
+
+- const regex = /[+-\s]/;
+
+Step 23
+
+Regex can also take specific flags to alter the pattern matching behavior. Flags are added after the closing /
+
+- The g flag, which stands for "global", will tell the pattern to continue looking after it has found a match.
+
+            const helloRegex = /hello/g;
+
+- Add the g flag to your regex pattern.
+
+Step 24
+
+JavaScript provides a .replace() method that enables you to replace characters in a string with another string. This method accepts two arguments. The first argument is the character sequence to be replaced, which can be either a string or a regex pattern. The second argument is the string that replaces the matched sequence.
+
+- Since strings are immutable, the replace method returns a new string with the replaced characters.
+
+- In this example, the replace method is used to replace all instances of the letter l with the number 1 in the string hello.
+  "hello".replace(/l/g, "1");
+
+- Use your regex to replace all instances of +, -, and a space in str with an empty string. Return this value.
+
+Step 25
+
+Now it is time to test out your cleanInputString function.
+
+Inside your cleanInputString function, add a console.log() statement with two arguments. The first argument should be the string "original string: " and the second argument should be the str parameter.
+
+Step 28
+In HTML, number inputs allow for exponential notation (such as 1e10). You need to filter those out.
+
+Start by creating a function called isInvalidInput – it should take a single str parameter.
+
+Step 30
+The e in a number input can also be an uppercase E. Regex has a flag for this, however – the i flag, which stands for "insensitive".
+
+Step 33
+There is a shorthand character class to match any digit: \d. Replace your [0-9] character classes with this shorthand.
+
+Step 34
+Strings have a .match() method, which takes a regex argument. .match() will return an array of match results – containing either the first match, or all matches if the global flag is used.
+
+- Return the result of calling the .match() method on str and passing your regex variable as the argument. You'll use this match result later on.
+
+Step 38
+Now you need to retrieve the value of entryDropdown.value to get the currently selected option from the dropdown.
+
+Step 39
+Now that you have finished testing the value of entryDropdown.value, you can remove the console.log statement.
+
+Your next step is to allow users to add entries to the calorie counter. Declare an empty function addEntry. This function should not take any parameters.
+
+tep 40
+You'll need to know which category the entry goes in. Thankfully, you added a dropdown for the user to select a category.
+
+Remember that you queried that dropdown earlier in your JavaScript and assigned it to the entryDropdown variable. You can use the value property to get the value of the selected option.
+
+---
+
+Note to write about Regular Expression:
+
+- The character class \s will match any whitespace character. Add this to your regex pattern. regex= /\+-\s/
+
+- To tell the pattern to match each of these characters individually, you need to turn them into a character class thats done by wrapping the character in brackets const regex = /[helo]/;
+
+- The g flag, which stands for "global", will tell the pattern to continue looking after it has found a match
+
+- JavaScript provides a .replace() method that enables you to replace characters in a string with another string. This method accepts two arguments. The first argument is the character sequence to be replaced, which can be either a string or a regex pattern. The second argument is the string that replaces the matched sequence.
+  Since strings are immutable, the replace method returns a new string with the replaced characters.
+
+- In HTML, number inputs allow for exponential notation (such as 1e10). You need to filter those out.
+
+- The e in a number input can also be an uppercase E. Regex has a flag for this, however – the i flag, which stands for "insensitive".
+
+- Number inputs only allow the e to occur between two digits. To match any number, you can use the character class [0-9]. This will match any digit between 0 and 9.
+
+- There is a shorthand character class to match any digit: \d. Replace your [0-9] character classes with this shorthand.
+
+- The + modifier in a regex allows you to match a pattern that occurs one or more times.
+
+- Strings have a .match() method, which takes a regex argument. .match() will return an array of match results – containing either the first match, or all matches if the global flag is used.
+
+- The match method returns an array with any matches found in the string. ex: [ '1e3', index: 0, input: '1e3', groups: undefined ]
+- The match method returns null when no match is found.
+
+- null in JavaScript is a special primitive that represents the intentional absence of a value. In a boolean context, null is considered falsy which evaluates to false in a conditional statement.
