@@ -214,14 +214,69 @@ Now that you have finished testing the value of entryDropdown.value, you can rem
 
 Your next step is to allow users to add entries to the calorie counter. Declare an empty function addEntry. This function should not take any parameters.
 
-tep 40
+Step 40
 You'll need to know which category the entry goes in. Thankfully, you added a dropdown for the user to select a category.
 
 Remember that you queried that dropdown earlier in your JavaScript and assigned it to the entryDropdown variable. You can use the value property to get the value of the selected option.
 
----
+Step 44
+You will want to number the entries a user adds. To get all of the number inputs, you can use the querySelectorAll() method.
 
-Note to write about Regular Expression:
+The querySelectorAll() method returns a NodeList of all the elements that match the selector. A NodeList is an array-like object, so you can access the elements using bracket notation.
+
+- Declare an entryNumber variable and give it the value of targetInputContainer.querySelectorAll(). You do not need to pass an argument to the query selector yet.
+
+Step 45
+Each entry will have a text input for the entry's name, and a number input for the calories. To get a count of the number of entries, you can query by text inputs.
+
+Pass the string input[type="text"] to the querySelectorAll() method. Remember that if you use single quotes for your string, you must also use double quotes within it (or vice-versa).
+
+### This will return a NodeList of all the text inputs in the form. You can then access the length property of the NodeList to get the number of entries. Do this on the same line.
+
+Step 47
+Inside your template literal, create a label element and give it the text Entry # Name. Using your template literal syntax, replace # with the value of entryNumber.
+
+Step 49
+After your label element, and on a new line in your template string, create an input element. Give it a type attribute set to text, a placeholder attribute set to Name, and an id attribute that matches the for attribute of your label element.
+
+Step 50
+Create another label element (on a new line) at the end of your HTMLString. This label should have the text Entry # Calories, using your template literal syntax to replace # with the value of entryNumber, and the for attribute set to X-#-calories, where X is the value of entryDropdown and # is the value of entryNumber.
+
+Step 51
+Finally, on a new line after your second label, create another input element. Give this one a type attribute set to number, a min attribute set to 0 (to ensure negative calories cannot be added), a placeholder attribute set to Calories, and an id attribute that matches the for attribute of your second label element.
+
+Step 53
+In the Role Playing Game project, you learned how to set a button's behavior by editing its onclick property. You can also edit an element's behavior by adding an event listener.
+
+Step 54
+Try adding a couple of entries to the Breakfast category, and you may notice some bugs! The first thing we need to fix is the entry counts – the first entry should have a count of 1, not 0.
+
+Step 56
+The insertAdjacentHtml method takes two arguments. The first argument is a string that specifies the position of the inserted element. The second argument is a string containing the HTML to be inserted.
+
+Step 57
+Great! Now you can add entries without losing your previous inputs.
+
+Your next step is to write a function that will get the calorie counts from the user's entries.
+
+Declare a getCaloriesFromInputs function, and give it a parameter called list.
+
+Step 58
+In your new function, declare a calories variable and assign it the value 0. Use let to declare it, since you will be reassigning it later.
+
+Step 59
+The list parameter is going to be the result of a query selector, which will return a NodeList. A NodeList is a list of elements like an array. It contains the elements that match the query selector. You will need to loop through these elements in the list.
+
+In previous steps, you learned how to loop through an array using a for loop. You can also use a for...of loop to loop through an array and a NodeList.
+
+A for...of loop is used to iterate over elements in an iterable object like an array. The variable declared in the loop represents the current element being iterated over.
+
+Step 60
+The NodeList values you will pass to list will consist of input elements. So you will want to look at the value attribute of each element.
+
+Assign item.value to a const variable called currVal.
+
+## Important to Note:
 
 - The character class \s will match any whitespace character. Add this to your regex pattern. regex= /\+-\s/
 
@@ -248,3 +303,11 @@ Note to write about Regular Expression:
 - The match method returns null when no match is found.
 
 - null in JavaScript is a special primitive that represents the intentional absence of a value. In a boolean context, null is considered falsy which evaluates to false in a conditional statement.
+
+- The querySelectorAll() method returns a NodeList of all the elements that match the selector. A NodeList is an array-like object, so you can access the elements using bracket notation.
+
+- The addEventListener method takes two arguments. The first is the event to listen to. (Ex. 'click') The second is the callback function, or the function that runs when the event is triggered
+
+- The insertAdjacentHtml method takes two arguments. The first argument is a string that specifies the position of the inserted element. The second argument is a string containing the HTML to be inserted.
+
+- A for...of loop is used to iterate over elements in an iterable object like an array. The variable declared in the loop represents the current element being iterated over.
