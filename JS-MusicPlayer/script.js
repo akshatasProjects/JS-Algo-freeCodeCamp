@@ -1,3 +1,14 @@
+/* 
+step 1: create a variables and DOM through its ID and a audio HTML element
+step 2: Create a variable "allSongs" array of objects 10 having all song details
+step 3: create a Object assigned with allsongs using spread operator 
+step 4: create an arrow function "renderSongs" with map() creating <li>element and button element 
+step 5: Assign songsHTML to the playlistSongs to display 
+step 6: call renderSongs function with userData?.songs 
+step 7: create a variable called sortSongs sort the songs from userData?.songs.sort()
+*/
+
+//----------------------------------------
 const playlistSongs = document.getElementById("playlist-songs");
 const playButton = document.getElementById("play");
 const pauseButton = document.getElementById("pause");
