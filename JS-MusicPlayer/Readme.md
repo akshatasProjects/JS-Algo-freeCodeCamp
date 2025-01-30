@@ -118,6 +118,73 @@ Inside the map(), add a return statement with backticks where you will interpola
 
 Inside the backticks, create an li element with an id attribute of song-${song.id} and a class attribute of playlist-song.
 
+## Step 21
+
+Create a button element with class playlist-song-info. Inside the button, add a span element with the class playlist-song-title, then interpolate song.title as the text.
+
+## Step 22
+
+Inside the button element, create two more span elements.
+
+The first span element should have a class of playlist-song-artist. In between the span tags, add ${song.artist}.
+
+The second span element should have a class of playlist-song-duration. In between the span tags, add ${song.duration}.
+
+## Step 24
+
+Right now the songsHTML is an array. If you tried to display this as is, you would see the songs separated by commas. This is not the desired outcome because you want to display the songs as a list. To fix this, you will need to join the array into a single string by using the join() method.
+
+The join() method is used to concatenate all the elements of an array into a single string. It takes an optional parameter called a separator which is used to separate each element of the array.
+
+Chain the join() method to your map() method and pass in an empty string for the separator.
+
+To chain multiple methods together, you can call the join() method on the result of the map() method.
+
+## Step 25
+
+Next, you will need to update the playlist in your HTML document to display the songs.
+
+Assign songsHTML to the innerHTML property of the playlistSongs element. This will insert the li element you just created into the ul element in the already provided HTML file.
+
+## Step 26
+
+Now you need to call the renderSongs function and pass in userData?.songs in order to finally display the songs in the UI.
+Optional chaining (?.) helps prevent errors when accessing nested properties that might be null or undefined.
+
+Call the renderSongs function with the songs property of userData. This will render the songs in the playlist.
+
+## Step 27
+
+Now that you have the list of songs displayed on the screen, it would be nice to sort them in alphabetical order by title.
+
+Start by creating an arrow function called sortSongs.
+
+## Step 28
+
+Now that you have the list of songs displayed on the screen, it would be nice to sort them in alphabetical order by title. You could manually update the allSongs array, but JavaScript has an array method you can use called sort().
+
+The sort() method converts elements of an array into strings and sorts them in place based on their values in the UTF-16 encoding.
+
+Inside your sortSongs function, add the sort() method to userData?.songs.
+
+## Step 29
+
+To sort the songs in alphabetical order by title, you will need to pass in a compare callback function into your sort() method.
+
+In the next few steps, you will learn what each of those if statements is doing inside that callback function. But for now, add an empty callback function to your sort() method and use a and b for the parameter names.
+
+## Step 30
+
+The sort() method accepts a compare callback function that defines the sort order.
+
+In this example, the first condition (a.name < b.name) checks if the name of the first fruit is less than the name of the second fruit. If so, the first fruit is sorted before the second fruit.
+
+Strings are compared lexicographically which means they are compared character by character. For example, "Apples" is less than "Bananas" because "A" comes before "B" in the alphabet.
+
+The reason why this example is returning numbers is because the sort() method is expecting a number to be returned. If you return a negative number, the first item is sorted before the second item
+
+Inside your callback function, add an if statement to check if a.title is less than b.title. If so, return -1.
+
 # ------------------------ NOTES -----------------------
 
 - The Web Audio API and how to use it to play songs. All modern browsers support the Web Audio API, which lets you generate and process audio in web applications.
@@ -134,3 +201,12 @@ Inside the backticks, create an li element with an id attribute of song-${song.i
   The map() method is used to iterate through an array and return a new array. It's helpful when you want to create a new array based on the values of an existing array
 
   Notice that the map() method takes a function as an argument. This is called a callback function, which is a function that is passed to another function as an argument.
+
+- The join() method is used to concatenate all the elements of an array into a single string. It takes an optional parameter called a separator which is used to separate each element of the array.
+
+- Optional chaining (?.) helps prevent errors when accessing nested properties that might be null or undefined.
+  ex: const zipCode = user.address?.zipCode;
+  // Returns undefined instead of throwing an error as zipCode is not available in the object
+
+- The sort() method converts elements of an array into strings and sorts them in place based on their values in the UTF-16 encoding.
+  - Strings are compared lexicographically which means they are compared character by character. For example, "Apples" is less than "Bananas" because "A" comes before "B" in the alphabet
