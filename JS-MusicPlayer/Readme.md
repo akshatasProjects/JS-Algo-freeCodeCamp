@@ -1,5 +1,19 @@
 # Array Methods by building a Music Player
 
+=====================
+
+### Algorithm
+
+- step 1: create a variables and DOM through its ID and a audio HTML element
+- step 2: Create a variable "allSongs" array of objects 10 having all song details
+- step 3: create a Object assigned with allsongs using spread operator
+- step 4: create an arrow function "renderSongs" with map() creating element and button element
+- step 5: Assign songsHTML to the playlistSongs to display
+- step 6: call renderSongs function with userData?.songs
+- step 7: create a variable called sortSongs sort the songs from userData?.songs.sort()
+
+=====================
+
 Now let's learn some essential string and array methods like the find(), forEach(), map(), and join(). These methods are crucial for developing dynamic web applications.
 
 - In this project, you'll code a basic MP3 player using HTML, CSS, and JavaScript.
@@ -185,7 +199,135 @@ The reason why this example is returning numbers is because the sort() method is
 
 Inside your callback function, add an if statement to check if a.title is less than b.title. If so, return -1.
 
-# ------------------------ NOTES -----------------------
+# Step 31
+
+The second condition in this example checks if a.name > b.name. If so, the function returns 1, which sorts the first fruit after the second fruit.
+
+Inside your callback function, add another if statement to check if a.title is greater than b.title. If so, return the number 1.
+
+Below your if statements, return the number 0 to leave the order of the two elements unchanged.
+
+# Step 32
+
+In the example, if a.name is equal to b.name, then the function returns 0. This means that nothing changes and the order of a and b remains the same.
+
+# Step 33
+
+The last step for the sortSongs function is to return userData?.songs.
+
+# Step 34
+
+Right now the song order has not changed. That is because the updates you made using the sort method will not happen until the sortSongs function is called.
+
+Change your renderSongs function to call the sortSongs function.
+
+Now you should see the songs in alphabetical order.
+
+# Step 35
+
+It's time to begin implementing the functionality for playing the displayed songs.
+
+Define a playSong function using const. The function should take an id parameter which will represent the unique identifier of the song you want to play.
+
+# Step 36
+
+The find() method retrieves the first element within an array that fulfills the conditions specified in the provided callback function. If no element satisfies the condition, the method returns undefined.
+
+Use const to create a variable named song and assign it result of the find() method call on the userData?.songs array. Use song as the parameter of the find() callback and check if song.id is strictly equal to id.
+
+This will iterate through the userData?.songs array, searching for a song that corresponds to the id passed into the playSong function.
+
+# Step 37
+
+Inside the playSong function, set the audio.src property equal to song.src. This tells the audio element where to find the audio data for the selected song.
+
+Also, set the audio.title property equal to song.title. This tells the audio element what to display as the title of the song.
+
+# Step 38
+
+Before playing the song, you need to make sure it starts from the beginning. This can be achieved by the use of the currentTime property on the audio object.
+
+Add an if statement to check whether the userData?.currentSong is falsy OR if userData?.currentSong.id is strictly not equal song.id. This condition will check if no current song is playing or if the current song is different from the one that is about to be played.
+
+Inside if block, set the currentTime property of the audio object to 0.
+
+# Step 39
+
+Add an else block to handle the song's current playback time. This allows you to resume the current song at the point where it was paused.
+
+Within the else block, set the currentTime property of the audio object to the value stored in userData?.songCurrentTime.
+
+# Step 40
+
+You need to update the current song being played as well as the appearance of the playButton element.
+
+Assign song to the currentSong property on the userData object.
+
+Note: You should not use the optional chaining operator ?. in this step because userData.currentSong will not be null or undefined at this point.
+
+# Step 41
+
+Next, use the classList property and the add() method to add the "playing" class to the playButton element. This will look for the class "playing" in the CSS file and add it to the playButton element.
+
+To finally play the song, use the play() method on the audio variable. play() is a method from the web audio API for playing an mp3 file.
+
+# Step 42
+
+In previous steps you built out the functionality for playing a song. Now you need to add the functionality to the play button so that it will play the current song when it is clicked on.
+
+Use the addEventListener() method and pass in a "click" event for the first argument and an empty callback function with arrow syntax for the second argument, e.g., () => {}.
+
+# Step 43
+
+Within the arrow function of the event listener, add an if to check if userData?.currentSong is null.
+
+Inside the if block, call the playSong() function with the id of the first song in the userData?.songs array. This will ensure the first song in the playlist is played first.
+
+# Step 44
+
+Add an else block. Inside the else block, call the playSong function with the id of the currently playing song as an argument.
+
+This ensures that the currently playing song will continue to play when the play button is clicked.
+
+# Step 45
+
+To play the song anytime the user clicks on it, add an onclick attribute to the first button element. Inside the onclick, call the playSong function with song.id.
+
+Don't forget you need to interpolate with the dollar sign here.
+
+# Step 46
+
+Now you need to work on pausing the currently playing song.
+
+Define a pauseSong function using the const keyword and arrow function syntax. The function should take no parameters.
+
+# Step 47
+
+To store the current time of the song when it is paused, set the songCurrentTime of the userData object to the currentTime of the audio variable.
+
+Note: You should not use optional chaining for this step because userData.songCurrentTime will not be null or undefined at this point.
+
+# Step 48
+
+Use classList and remove() method to remove the playing class from the playButton, since the song will be paused at this point.
+
+To finally pause the song, use the pause() method on the audio variable. pause() is a method of the Web Audio API for pausing music files.
+
+# Step 49
+
+Now it is time to test out the pause button.
+
+Add a "click" event listener to the pauseButton element, then pass in pauseSong as the second argument of the event listener. This is the function the event listener will run.
+
+Test out your app by first clicking on the play button followed by the pause button. You should see that everything is working as expected.
+
+# Step 50
+
+Before you start working on playing the next and previous song, you need to get the index of each song in the songs property of userData.
+
+Start by creating an arrow function called getCurrentSongIndex.
+
+# ---------------- NOTES --------------------
 
 - The Web Audio API and how to use it to play songs. All modern browsers support the Web Audio API, which lets you generate and process audio in web applications.
 
@@ -209,4 +351,19 @@ Inside your callback function, add an if statement to check if a.title is less t
   // Returns undefined instead of throwing an error as zipCode is not available in the object
 
 - The sort() method converts elements of an array into strings and sorts them in place based on their values in the UTF-16 encoding.
-  - Strings are compared lexicographically which means they are compared character by character. For example, "Apples" is less than "Bananas" because "A" comes before "B" in the alphabet
+
+  - Strings are compared lexicographically which means they are compared character by character. For example, "Apples" is less than "Bananas" because "A" comes before "B" in the alphabet.
+
+  - The reason why this example is returning numbers is because the sort() method is expecting a number to be returned. If you return a negative number, the first item is sorted before the second item
+
+  - It should return a number where: - A negative value indicates that a should come before b. - A positive value indicates that a should come after b. - Zero or NaN indicates that a and b are considered equal.
+    To memorize this, remember that (a, b) => a - b sorts numbers in ascending order.
+
+If omitted, the array elements are converted to strings, then sorted according to each character's Unicode code point value.
+
+- The find() method retrieves the first element within an array that fulfills the conditions specified in the provided callback function. If no element satisfies the condition, the method returns undefined.
+
+- ?. -- optional chaining operator
+
+- play() is a method from the web audio API for playing an mp3 file.
+- pause() is a method of the Web Audio API for pausing music files.

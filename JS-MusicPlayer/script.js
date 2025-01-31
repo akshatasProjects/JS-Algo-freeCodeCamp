@@ -1,14 +1,3 @@
-/* 
-step 1: create a variables and DOM through its ID and a audio HTML element
-step 2: Create a variable "allSongs" array of objects 10 having all song details
-step 3: create a Object assigned with allsongs using spread operator 
-step 4: create an arrow function "renderSongs" with map() creating <li>element and button element 
-step 5: Assign songsHTML to the playlistSongs to display 
-step 6: call renderSongs function with userData?.songs 
-step 7: create a variable called sortSongs sort the songs from userData?.songs.sort()
-*/
-
-//----------------------------------------
 const playlistSongs = document.getElementById("playlist-songs");
 const playButton = document.getElementById("play");
 const pauseButton = document.getElementById("pause");
@@ -90,7 +79,6 @@ const allSongs = [
 ];
 
 const audio = new Audio();
-
 let userData = {
   songs: [...allSongs],
   currentSong: null,
@@ -102,7 +90,7 @@ const renderSongs = (array) => {
     .map((song) => {
       return `
       <li id="song-${song.id}" class="playlist-song">
-      <button class="playlist-song-info">
+      <button class="playlist-song-info" onclick="playSong(${song.id}>
           <span class="playlist-song-title">${song.title}</span>
           <span class="playlist-song-artist">${song.artist}</span>
           <span class="playlist-song-duration">${song.duration}</span>
@@ -119,13 +107,66 @@ const renderSongs = (array) => {
   playlistSongs.innerHTML = songsHTML;
 };
 
-renderSongs(userData?.songs);
-
-// sorting songs using arrow
 const sortSongs = () => {
   userData?.songs.sort((a, b) => {
     if (a.title < b.title) {
       return -1;
     }
+
+    if (a.title > b.title) {
+      return 1;
+    }
+
+    return 0;
   });
+
+  return userData?.songs;
 };
+renderSongs(sortSongs());
+
+// This will iterate through the userData?.songs array, searching
+// for a song that corresponds to the id passed into the playSong
+// function.
+const playSong = (id) => {
+  const song = userData?.songs.find((song) => song.id === id);
+  audio.src = song.src;
+  audio.title = song.title;
+  /* This condition will check if no current song is playing or if 
+  the current song is different from the one that is about to be 
+  played.*/
+  if (userData?.currentSong === null || userData?.currentSong.id !== song.id) {
+    audio.currentTime = 0;
+  } else {
+    /* This allows you to resume the current song at the point where it was paused. */
+    audio.currentTime = userData?.songCurrentTime;
+  }
+  userData.currentSong = song;
+  playButton.classList.add("playing");
+  audio.play();
+};
+
+// Play Song
+playButton.addEventListener("click", () => {
+  if (userData?.currentSong === null) {
+    playSong(userData?.songs[0].id);
+  } else {
+    /* This ensures that the currently playing song will 
+       continue to play when the play button is clicked */
+    playSong(userData?.currentSong.id);
+  }
+});
+
+// ---------------Pause Function------------------
+const pauseSong = () => {
+  // To store the current time of the song when it is paused,
+  userData.songCurrentTime = audio.currentTime;
+  // Use classList and remove() method to remove the playing class
+  // from the playButton, since the song will be paused at this point.
+  playButton.classList.remove("playing");
+  audio.pause();
+};
+
+pauseButton.addEventListener("click", pauseSong);
+
+// To get the index of each song in the songs property of userData
+const getCurrentSongIndex = () => {};
