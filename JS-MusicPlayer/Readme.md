@@ -327,6 +327,111 @@ Before you start working on playing the next and previous song, you need to get 
 
 Start by creating an arrow function called getCurrentSongIndex.
 
+# Step 51
+
+To get the index for the current song, you can use the indexOf() method. The indexOf() array method returns the first index at which a given element can be found in the array, or -1 if the element is not present.
+Inside your getCurrentSongIndex function, return userData?.songs.indexOf(). For the indexOf() argument, set it to userData?.currentSong.
+
+# Step 52
+
+You need to work on playing the next song and the previous song. For this, you will need a playNextSong and playPreviousSong function.
+
+Use const and arrow syntax to create an empty playNextSong function.
+
+# Step 53
+
+Inside the playNextSong function, create an if statement to check if the currentSong of userData is strictly equal to null. This will check if there's no current song playing in the userData object.
+
+If the condition is true, call the playSong function with the id of the first song in the userData?.songs array as an argument.
+
+# Step 54
+
+Add an else block to the if statement. Inside the else block, call the getCurrentSongIndex() function and assign it to a constant named currentSongIndex.
+
+# Step 55
+
+Next, you will need to retrieve the next song in the playlist. For that, you will need to get the index of the current song and then add 1 to it.
+
+Create a constant called nextSong and assign userData?.songs[currentSongIndex + 1] to it.
+
+Lastly, call the playSong function and pass in nextSong.id as the argument.
+
+# Step 56
+
+Now it is time to test out the playNextSong function.
+
+Add a "click" event listener to the nextButton element, then pass in playNextSong as the second argument of your event listener. This is the function the event listener will run.
+
+Test out your app by first clicking on the play button followed by the next button. You should see that everything is working as expected.
+
+# Step 57
+
+Use const and arrow syntax to create an empty playPreviousSong function.
+
+# Step 58
+
+Within the playPreviousSong function, add an if statement with a condition of userData?.currentSong === null. This will check if there is currently no song playing. If there isn't any, exit the function using a return.
+
+Inside the else block, create a constant named currentSongIndex and assign it getCurrentSongIndex().
+
+# Step 59
+
+To get the previous song, subtract 1 from the currentSongIndex of userData?.songs and assign it to the constant previousSong. After that, call the playSong function and pass previousSong.id as an argument.
+
+# Step 61
+
+If you check closely, you'd see the currently playing song is not highlighted in the playlist, so you don't really know which song is playing. You can fix this by creating a function to highlight any song that is being played.
+
+Using an arrow syntax, create a highlightCurrentSong function. Inside the function, use querySelectorAll to get the .playlist-song element and assign to a playlistSongElements constant.
+
+# Step 62
+
+You need to get the id of the currently playing song. For this, you can use userData?.currentSong?.id.
+
+Use getElementById() to get the id of the currently playing song, then use template literals to prefix it with song-. Assign it to the constant songToHighlight.
+
+# Step 63
+
+Loop through the playlistSongElements with a forEach method.
+
+The forEach method is used to loop through an array and perform a function on each element of the array.
+
+Use the forEach method on playlistSongElements. Pass in songEl as the parameter and use arrow syntax to add in an empty callback.
+
+# Step 64
+
+Within the callback function, use the removeAttribute() method to remove the "aria-current" attribute. This will remove the attribute for each of the songs.
+
+# Step 65
+
+Now you need to add the attribute back to the currently playing song.
+
+Create an if statement with the condition songToHighlight. For the statement, use setAttribute on songToHighlight to pass in "aria-current" and "true" as the first and second arguments.
+
+# Step 66
+
+Inside the playSong function, call the highlightCurrentSong function.
+
+After that, play around with the control buttons to see how the highlightCurrentSong function works.
+
+# Step 67
+
+Next, you need to display the current song title and artist in the player display. Use const and arrow syntax to create an empty setPlayerDisplay function.
+
+# Step 68
+
+Inside the function, obtain references to the HTML elements responsible for displaying the song title and artist.
+
+Access the #player-song-title and #player-song-artist elements with the getElementById() method. Assign them to variables playingSong and songArtist respectively.
+
+# Step 70
+
+textContent sets the text of a node and allows you to set or retrieve the text content of an HTML element.
+
+Use a ternary operator to check if currentTitle evaluates to a truthy value. If it does, set playingSong.textContent to currentTitle. Otherwise, set it to an empty string.
+
+Then below that, use a ternary operator to check if currentArtist is truthy. If so, set songArtist.textContent to currentArtist. Otherwise, set it to empty string.
+
 # ---------------- NOTES --------------------
 
 - The Web Audio API and how to use it to play songs. All modern browsers support the Web Audio API, which lets you generate and process audio in web applications.
@@ -367,3 +472,7 @@ If omitted, the array elements are converted to strings, then sorted according t
 
 - play() is a method from the web audio API for playing an mp3 file.
 - pause() is a method of the Web Audio API for pausing music files.
+
+- The indexOf() array method returns the first index at which a given element can be found in the array, or -1 if the element is not present.
+
+- The forEach method is used to loop through an array and perform a function on each element of the array.

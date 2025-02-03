@@ -143,6 +143,8 @@ const playSong = (id) => {
   userData.currentSong = song;
   playButton.classList.add("playing");
   audio.play();
+
+  highlightCurrentSong();
 };
 
 // Play Song
@@ -169,4 +171,61 @@ const pauseSong = () => {
 pauseButton.addEventListener("click", pauseSong);
 
 // To get the index of each song in the songs property of userData
-const getCurrentSongIndex = () => {};
+const getCurrentSongIndex = () => {
+  return userData?.songs.indexOf(userData?.currentSong);
+};
+
+// playing the next song and the previous song
+const playNextSong = () => {
+  // to check if there's no current song playing in the userData object.
+  if (userData?.currentSong === null) {
+    playSong(userData?.songs[0].id);
+  } else {
+    const currentSongIndex = getCurrentSongIndex();
+    const nextSong = userData?.songs[currentSongIndex + 1];
+    playSong(nextSong.id);
+  }
+};
+
+nextButton.addEventListener("click", playNextSong);
+
+// Previous Song
+const playPreviousSong = () => {
+  if (userData?.currentSong === null) {
+    return;
+  } else {
+    const currentSongIndex = getCurrentSongIndex();
+    const previousSong = userData?.songs[currentSongIndex - 1];
+    playSong(previousSong.id);
+  }
+};
+
+previousButton.addEventListener("click", playPreviousSong);
+
+// to highlight any song that is being played
+const highlightCurrentSong = () => {
+  const playlistSongElements = document.querySelectorAll(".playlistSongs");
+  // You need to get the id of the currently playing song
+  const songToHighlight = document.getElementById(
+    `song-${userData?.currentSong?.id}`
+  );
+
+  playlistSongElements.forEach((songEl) => {
+    songEl.removeAttribute("aria-current");
+  });
+
+  if (songToHighlight) {
+    songToHighlight.setAttribute("aria-current", "true");
+  }
+};
+
+// to display the current song title and artist in the player display
+const setPlayerDisplay = () => {
+  const playingSong = document.getElementById("player-song-title");
+  const songArtist = document.getElementById("player-song-artist");
+  const currentTitle = userData?.currentSong?.title;
+  const currentArtist = userData?.currentSong?.artist;
+
+  playingSong.textContent = currentTitle ? currentTitle : "";
+  songArtist.textContent = currentArtist ? currentArtist : "";
+};
