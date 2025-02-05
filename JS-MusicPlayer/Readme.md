@@ -432,6 +432,141 @@ Use a ternary operator to check if currentTitle evaluates to a truthy value. If 
 
 Then below that, use a ternary operator to check if currentArtist is truthy. If so, set songArtist.textContent to currentArtist. Otherwise, set it to empty string.
 
+# Step 71
+
+To ensure the player's display updates whenever a new song begins playing, call the setPlayerDisplay() function within the playSong() function.
+
+Now you should see the song title and the artist show up in the display.
+
+# Step 72
+
+To make the application more accessible, it is important that the play button describes the current song or the first song in the playlist.
+
+Start by creating an empty arrow function called setPlayButtonAccessibleText.
+
+# Step 73
+
+You need to get the currently playing song or the first song in the playlist. To do that, create a song constant and use the OR operator (||) to set it to the current song of userData, or the first song in the userData?.songs array.
+
+Don't forget to use optional chaining.
+
+# Step 74
+
+The setPlayButtonAccessibleText function will set the aria-label attribute to the current song, or to the first song in the playlist. And if the playlist is empty, it sets the aria-label to "Play".
+
+Use the setAttribute method on the playButton element to set an attribute named "aria-label". Using a ternary, set the attribute value to Play ${song.title} or "Play" if song?.title is not available.
+
+Don't forget you need string interpolation here, so you need to use backticks.
+
+# Step 75
+
+Now, call the setPlayButtonAccessibleText function inside the playSong function.
+
+# Step 76
+
+Using const and arrow syntax to create an empty function called shuffle.
+
+This function is responsible for shuffling the songs in the playlist and performing necessary state management updates after the shuffling.
+
+# Step 77
+
+In earlier steps, you learned how to work with the sort() method to sort the songs in alphabetical order. Another use case for the callback function is to randomize an array.
+
+One way to randomize an array of items would be to subtract 0.5 from Math.random() which produces random values that are either positive or negative. This makes the comparison result a mix of positive and negative values, leading to a random ordering of elements.
+
+Example Code
+const names = ["Tom", "Jessica", "Quincy", "Naomi"];
+names.sort(() => Math.random() - 0.5);
+Use the sort() method on the userData?.songs array. Pass a callback to the method, and return the result of Math.random() - 0.5.
+
+# Step 78
+
+When the shuffle button is pressed, you want to set the currentSong to nothing and the songCurrentTime to 0.
+
+Set userData.currentSong to null and userData.songCurrentTime to 0.
+
+Note: You should not use optional chaining for this step because you are explicitly setting the currentSong and songCurrentTime properties to be null and 0 respectively.
+
+# Step 79
+
+You should also re-render the songs, pause the currently playing song, set the player display, and set the play button accessible text again.
+
+Call the renderSongs function and pass in userData?.songs as an argument. Also, call the pauseSong, setPlayerDisplay, and setPlayButtonAccessibleText functions.
+
+# Step 80
+
+Add a "click" event listener to the shuffleButton element. For the function to run, pass in the shuffle function.
+
+Note: You don't need a callback inside this particular event listener. You also don't need to call the shuffle function, just pass in its identifier.
+
+# Step 81
+
+It's time to implement a delete functionality for the playlist. This would manage the removal of a song from the playlist, handle other related actions when a song is deleted, and create a Reset Playlist button.
+
+Use const and arrow syntax to create an empty deleteSong function and pass in id as a parameter.
+
+# Step 82
+
+Use the filter() method to remove the song object that matches the id parameter from the userData?.songs array.
+
+The filter method keeps only the elements of an array that satisfy the callback function passed to it:
+Use the filter() method on userData?.songs. Pass in song as the parameter of the arrow function callback and use implicit return to check if song.id is strictly not equal to id. Assign all of that to the userData.songs.
+
+Note: You should not use optional chaining when you assign the result of userData?.songs.filter to userData.songs because the allSongs array will not be undefined or null at that point.
+
+# Step 83
+
+You need to re-render the songs, highlight it and set the play button's accessible text since the song list will change.
+
+Call the renderSongs function and pass in the userData?.songs array as an argument, this displays the modified playlist.
+
+After that, call the highlightCurrentSong function to highlight the current song if there is any also and the setPlayButtonAccessibleText function to update the play button's accessible text.
+
+# Step 84
+
+Before deleting a song, you need to check if the song is currently playing. If it is, you need to pause the song and play the next song in the playlist.
+
+Use an if statement to check if the userData?.currentSong?.id is equal to the id of the song you want to delete.
+
+# Step 85
+
+If there is a match then set userData.currentSong to null and userData.songCurrentTime to 0.
+
+After that, call the pauseSong() function to stop the playback and the setPlayerDisplay() function to update the player display.
+
+# Step 86
+
+Within the button element in the renderSongs function, add an onclick attribute. For the value, call the deleteSong function and interpolate song.id.
+
+# Step 87
+
+Next, you need to check if the playlist is empty. If it is, you should reset the userData object to its original state.
+
+Use an if statement to check if the userData?.songs has a length of 0.
+
+# Step 88
+
+If the playlist is empty, you need to create a resetButton element and a text for it. This button will only show up if the playlist is empty.
+
+createElement() is a DOM method you can use to dynamically create an element using JavaScript. To use createElement(), you call it, then pass in the tag name as a string:
+
+Inside your if statement, declare a resetButton constant, then use createElement() to create a "button".
+
+# Step 89
+
+Now that you've created the button, you need to assign it a text. To do this, you need to use the createTextNode() method of DOM.
+
+The createTextNode() method is used to create a text node. To use it, you call it and pass in the text as a string:
+Use the createTextNode() method to create a "Reset Playlist" text, then assign it to a resetText constant.
+
+# Step 90
+
+Now that you've created the resetButton, you need to assign it an id and aria-label attributes. JavaScript provides the id and ariaLabel properties you need to use for this.
+
+For example, element.id would set an id attribute, and element.ariaLabel would set an aria-label attribute. Both of them accept their values as a string.
+
+Set the id attribute of the resetButton element to "reset" and its aria-label attribute to "Reset playlist".
+
 # ---------------- NOTES --------------------
 
 - The Web Audio API and how to use it to play songs. All modern browsers support the Web Audio API, which lets you generate and process audio in web applications.
@@ -476,3 +611,11 @@ If omitted, the array elements are converted to strings, then sorted according t
 - The indexOf() array method returns the first index at which a given element can be found in the array, or -1 if the element is not present.
 
 - The forEach method is used to loop through an array and perform a function on each element of the array.
+
+- The filter method keeps only the elements of an array that satisfy the callback function passed to it:
+
+- createElement() is a DOM method you can use to dynamically create an element using JavaScript. To use createElement(), you call it, then pass in the tag name as a string:
+
+- The createTextNode() method is used to create a text node. To use it, you call it and pass in the text as a string:
+
+- element.id would set an id attribute, and element.ariaLabel would set an aria-label attribute. Both of them accept their values as a string
