@@ -567,6 +567,56 @@ For example, element.id would set an id attribute, and element.ariaLabel would s
 
 Set the id attribute of the resetButton element to "reset" and its aria-label attribute to "Reset playlist".
 
+# Step 91
+
+You need to add the resetText to the resetButton element as a child, and also the resetButton to the playlistSongs element as a child. For this, there is an appendChild() method to use.
+
+appendChild() lets you add a node or an element as the child of another element.
+
+Use appendChild() to attach resetText to resetButton element, and resetButton to the playlistSongs element.
+
+# Step 92
+
+Now, it's time to add the reset functionality to the resetButton. This will bring back the songs in the playlist when clicked.
+
+Add a click event listener to the resetButton variable. Pass in a callback using arrow syntax and leave it empty for now.
+
+# Step 93
+
+To reset the playlist to its original state, spread allSongs into an array and assign it to userData.songs.
+
+Note: You should not use optional chaining for the userData.songs because the song will not be null or undefined at this point.
+
+# Step 94
+
+Finally, you should render the songs again, update the play button's accessible text, and remove the reset button from the playlist. You also need to remove the resetButton from the DOM.
+
+Call the renderSongs() function with sortSongs() as an argument to render the songs again in alphabetical order.
+
+Call the setPlayButtonAccessibleText() function to update the play button's accessible text.
+
+Remove the reset button from the playlist by calling the remove() method on the resetButton variable.
+
+Note: Now you can try removing all the songs to see what happens.
+
+# Step 95
+
+All the core functionalities are now in place. The only issue now is that the next song does not automatically play when the currently playing song ends.
+
+To fix that, you can set up an event listener which will detect when the currently playing song ends. The "ended" event listener is appropriate for this. It is fired when the playback of a media reaches the end.
+
+Add an event listener to the audio element which listens for the "ended" event. Pass in a callback using arrow syntax with empty curly braces.
+
+# Step 97
+
+Use an if statement to check if nextSongExists exists, then call the playNextSong() function in the if block. This will automatically play the next song when the current song ends.
+
+# Step 99
+
+With everything set in place, call the pauseSong(), setPlayerDisplay(), highlightCurrentSong(), and setPlayButtonAccessibleText() functions to correctly update the player.
+
+Congratulations on completing your music player! Now that we've finished testing and using the shorter songs, we've replaced them with the original tracks specially selected by Quincy for you to enjoy.
+
 # ---------------- NOTES --------------------
 
 - The Web Audio API and how to use it to play songs. All modern browsers support the Web Audio API, which lets you generate and process audio in web applications.
@@ -619,3 +669,7 @@ If omitted, the array elements are converted to strings, then sorted according t
 - The createTextNode() method is used to create a text node. To use it, you call it and pass in the text as a string:
 
 - element.id would set an id attribute, and element.ariaLabel would set an aria-label attribute. Both of them accept their values as a string
+
+- appendChild() lets you add a node or an element as the child of another element.
+
+- The "ended" event listener is appropriate for this. It is fired when the playback of a media reaches the end.
