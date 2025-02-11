@@ -1,14 +1,27 @@
-function isPalindrome(str) {
-  // Convert the string to lowercase and remove non-alphanumeric characters
-  const cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+/*
+  Get Input: Take a string as input from the user.
+  
+  Preprocess the String: 
+  Convert it to lowercase and remove non-alphanumeric characters (to ensure uniformity).
+  
+  Reverse the String: 
+  Create a reversed version of the processed string.
 
-  // Reverse the string
-  const reversedStr = cleanedStr.split("").reverse().join("");
+  Compare Original and Reversed Strings: 
+  If both are the same, it is a palindrome; otherwise, it is not.
 
-  // Check if the original and reversed strings are the same
-  return cleanedStr === reversedStr;
-}
+*/
 
-// Example usage
-const testString = "A man, a plan, a canal, Panama";
-console.log(`Is "${testString}" a palindrome?`, isPalindrome(testString));
+const textInputlEle = document.getElementById("text-input").Value;
+const btnEle = document.getElementById("check-btn");
+const resultEle = document.getElementById("result");
+
+btnEle.addEventListener("click", () => {
+  if (textInputlEle === " ") {
+    alert("Please input a value");
+  } else {
+    let processedStr = textInputlEle.toLowerCase().replace(/[^a-z0-9]/g, "");
+    let reversedStr = processedStr.split("").reverse().join("");
+    return processedStr === reversedStr;
+  }
+});
