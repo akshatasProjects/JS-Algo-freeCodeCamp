@@ -1,27 +1,25 @@
-/*
-  Get Input: Take a string as input from the user.
-  
-  Preprocess the String: 
-  Convert it to lowercase and remove non-alphanumeric characters (to ensure uniformity).
-  
-  Reverse the String: 
-  Create a reversed version of the processed string.
+document.getElementById("check-btn").addEventListener("click", function () {
+  let inputText = document.getElementById("text-input").value.trim();
+  let resultElement = document.getElementById("result");
 
-  Compare Original and Reversed Strings: 
-  If both are the same, it is a palindrome; otherwise, it is not.
+  // Check if input is empty
+  if (inputText === "") {
+    alert("Please input a value.");
+    return;
+  }
 
-*/
+  // Palindrome check function
+  function isPalindrome(str) {
+    let processedStr = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+    return processedStr === processedStr.split("").reverse().join("");
+  }
 
-const textInputlEle = document.getElementById("text-input").Value;
-const btnEle = document.getElementById("check-btn");
-const resultEle = document.getElementById("result");
-
-btnEle.addEventListener("click", () => {
-  if (textInputlEle === " ") {
-    alert("Please input a value");
+  // Display result
+  if (isPalindrome(inputText)) {
+    resultElement.textContent = `"${inputText}" is a palindrome!`;
+    resultElement.style.color = "green";
   } else {
-    let processedStr = textInputlEle.toLowerCase().replace(/[^a-z0-9]/g, "");
-    let reversedStr = processedStr.split("").reverse().join("");
-    return processedStr === reversedStr;
+    resultElement.textContent = `"${inputText}" is not a palindrome.`;
+    resultElement.style.color = "red";
   }
 });
