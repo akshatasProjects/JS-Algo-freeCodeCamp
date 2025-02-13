@@ -23,3 +23,25 @@ document.getElementById("check-btn").addEventListener("click", function () {
     resultElement.style.color = "red";
   }
 });
+
+/*
+
+const checkBtn = document.getElementById("check-btn");
+const textEle = document.getElementById("text-input").value.trim();
+const resultEle = document.getElementById("result");
+
+/*let processedStr = textEle.toLowerCase().replace(/[^a-z0-9]/g, "");
+let convertedStr = processedStr.split("").reverse().join("");*/
+
+// checkBtn.addEventListener("click", ()=>{
+
+//   if(textEle === ""){
+//     alert("Please input a value");
+//   } else if(textEle === str){
+//      let str = textEle.toLowerCase().split("").reverse().join("");
+
+//      resultEle.innerText = `${textEle} is a palindrome`;
+//     } else{
+//        resultEle.innerText = `${textEle} is not a palindrome`;
+//     }
+// })

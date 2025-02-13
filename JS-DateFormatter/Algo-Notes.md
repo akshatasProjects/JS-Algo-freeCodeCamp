@@ -21,6 +21,15 @@
 
 - dateOptionsSelectElement.value as a switch expression.
 
+14. Add a switch case statements so that it can reflect what user choses from the dropdown, When the user chooses the Year, Month, Day option from the dropdown, the date format should reflect this choice.
+    add a case clause in the switch statement that checks for a match against the expression expr, followed by code to run if there's a match.
+
+15. To format the date into yyyy-mm-dd, you will need to use the split, reverse, and join methods.
+
+16. Add another case with the value "mm-dd-yyyy-h-mm". Inside that case, set the text content of currentDateParagraph to empty template literals.
+
+17. Inside the case for mm-dd-yyyy-h-mm, use string interpolation to assign the formatted date from above to the textContent property of currentDateParagraph. Make sure to use the month, day, year, hours, and minutes variables in your answer.
+
 ## Notes:
 
 1. A constructor is like a regular function, but starts with a capital letter, and is initialized with the new operator.
@@ -40,3 +49,17 @@
    });
 
 8. A switch statement is used to compare an expression against multiple possible values and execute different code blocks based on the match. It's commonly used for branching logic.
+
+9. The split() method is used to divide a string into substrings based on a specified separator. It then returns these substrings as elements of an array.
+
+   - The split method takes in a parameter known as a separator. The separator is used to tell the computer where each split should occur.
+   - If you don't provide a separator, the method will return an array with the original string as the only element. If you give empty string "" it will give each letter as an element of array.
+
+10. The reverse() -- This method reverses the order of the elements in the array in place. The first element becomes the last, and the last element becomes the first.
+
+11. The join() -- This method takes an array of elements and joins them into a string.
+    Similar to the split method, the join method also takes an optional separator. If you don't provide a separator, the default separator is a comma.
+
+12. The break statement will tell the JavaScript interpreter to stop executing statements. Without adding a break statement at the end of each case block, the program will execute the code for all matching cases
+
+13. In a switch statement, the default case is executed when none of the previous case conditions match the value being evaluated. It serves as a catch-all for any other possible cases.
