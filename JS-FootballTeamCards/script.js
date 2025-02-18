@@ -182,6 +182,24 @@ const myFavoriteFootballTeam = {
 Object.freeze(myFavoriteFootballTeam);
 
 // Object destructuring
-const { sport, team } = myFavoriteFootballTeam;
+// Players is array
+const { sport, team, year, players } = myFavoriteFootballTeam;
+const { coachName } = myFavoriteFootballTeam.headCoach;
 
-// Step 16
+typeOfSport.textContent = sport;
+teamName.textContent = team;
+worldCupYear.textContent = year;
+headCoach.textContent = coachName;
+
+// arrow function to get the selected data from the
+// dropdown filter Teammates
+// {name, position, number,isCaptain, nickname } object destructuring
+const setPlayerCards = (arr = players) => {
+  playerCards.innerHTML += arr.map(
+    ({ name, position, number, isCaptain, nickname }) => {
+      return `<div class="player-card"></div>`;
+    }
+  );
+};
+
+// STEP 26/45
