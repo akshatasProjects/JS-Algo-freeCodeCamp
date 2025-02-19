@@ -51,6 +51,25 @@
 
 15. Inside the body of the callback function, you will need to return a template literal `` which will contain the HTML content for the player cards.
 
+16. Inside the div, add an h2 element which contains the name parameter. Since you are working with template literals, you will need to use an embedded expression for the name parameter
+
+17. Before the ${name} expression, add a new embedded expression. Inside that expression, use a ternary operator to check if isCaptain is true. If so, return "(Captain)" otherwise return an empty string.
+
+18. The .map() method will return a new array of player-card items separated by commas.
+    To remove the commas between each player-card so it does not show up on screen, chain the .join() method to the .map() method. Pass an empty string as the argument for the .join() method.
+
+19. Use the .addEventListener() method on playersDropdownList. Inside the event listener, pass in a "change" event type and an empty callback function.
+
+20. Inside the callback function, add a console.log with the value of e.target.value
+
+21. The next step would be to reset the content for the playerCards element. Inside the callback function, access the innerHTML property of the playerCards element and assign it a value of an empty string
+
+22. The next step would be to add a switch statement which will check for the user's selection from the player dropdown menu and filter out cards based on the player's positions. Add a switch statement and use e.target.value for the expression.
+
+23. Add a new case for "midfielder" that checks if player.position equals "midfielder" following the same pattern from the previous step.
+
+24. For the default clause, call the setPlayerCards function without any arguments passed in.
+
 <!-- Notes -->
 
 Object.freeze(obj) - The next step is to ensure that you can't modify this object by adding or removing any properties.
@@ -60,3 +79,9 @@ Object.freeze(obj) - The next step is to ensure that you can't modify this objec
 - Default Values - Function parameters can be initialized with default values. If a function is called without an argument, then the default value will be used.
 
 - The innerHTML property gets, or in this case, sets the HTML markup for the playerCards element.
+
+- The .map() method will return a new array of player-card items separated by commas.
+
+- e represents an object which contains the information for that event.
+
+- e.target.value represents the value property from the playersDropdownList element. In future steps, you will use this value to show player cards based on the position they play.

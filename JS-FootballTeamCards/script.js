@@ -195,11 +195,51 @@ headCoach.textContent = coachName;
 // dropdown filter Teammates
 // {name, position, number,isCaptain, nickname } object destructuring
 const setPlayerCards = (arr = players) => {
-  playerCards.innerHTML += arr.map(
-    ({ name, position, number, isCaptain, nickname }) => {
-      return `<div class="player-card"></div>`;
-    }
-  );
+  playerCards.innerHTML += arr
+    .map(({ name, position, number, isCaptain, nickname }) => {
+      return `<div class="player-card">
+        <h2>${isCaptain ? "(Captain)" : ""} ${name}</h2>
+          <p>Position: ${position}</p>
+          <p>Number: ${number}</p>
+          <p>Nickname: ${nickname !== null ? nickname : "N/A"}</p>
+        </div>`;
+    })
+    .join("");
 };
 
-// STEP 26/45
+playersDropdownList.addEventListener("change", (e) => {
+  // console.log(e.target.value);
+  playerCards.innerHTML = "";
+
+  // to filter players
+  switch (e.target.value) {
+    case "nickname":
+      setPlayerCards(players.filter((player) => player.nickname !== null));
+      break;
+
+    case "forward":
+      setPlayerCards(players.filter((player) => player.position === "forward"));
+      break;
+
+    case "midfielder":
+      setPlayerCards(
+        players.filter((player) => player.position === "midfielder")
+      );
+      break;
+
+    case "defender":
+      setPlayerCards(
+        players.filter((player) => player.position === "defender")
+      );
+      break;
+
+    case "goalkeeper":
+      setPlayerCards(
+        players.filter((player) => player.position === "goalkeeper")
+      );
+      break;
+
+    default:
+      setPlayerCards();
+  }
+});
