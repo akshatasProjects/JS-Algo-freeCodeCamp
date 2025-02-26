@@ -27,7 +27,6 @@ const dateInput = document.getElementById("date-input");
 const descriptionInput = document.getElementById("description-input");
 
 /*--------------------Code Starts from here-------------------------*/
-
 const taskData = [];
 let currentTask = {};
 
@@ -36,5 +35,26 @@ openTaskFormBtn.addEventListener("click", () => {
 });
 
 closeTaskFormBtn.addEventListener("click", () => {
-  confirmCloseDialog.showModal();
+  confirmCloseDialog.show();
+});
+
+cancelBtn.addEventListener("click", () => {
+  confirmCloseDialog.close();
+});
+
+discardBtn.addEventListener("click", () => {
+  confirmCloseDialog.close();
+  taskForm.classList.toggle("hidden");
+});
+
+taskForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
+  const taskObj = {
+    id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
+    title: titleInput.value,
+    date: dateInput.value,
+    description: descriptionInput.value,
+  };
 });
