@@ -47,6 +47,7 @@ discardBtn.addEventListener("click", () => {
   taskForm.classList.toggle("hidden");
 });
 
+// Getting data from the form inputs
 taskForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -57,4 +58,19 @@ taskForm.addEventListener("submit", (e) => {
     date: dateInput.value,
     description: descriptionInput.value,
   };
+
+  if (dataArrIndex === -1) {
+    taskData.unshift(taskObj);
+  }
+
+  taskData.forEach(({ id, title, date, description }) => {
+    tasksContainer.innerHTML += `
+      <div class="task" id="${id}">
+        <p><strong>Title :</strong>${title}</p>
+        <p><strong>Date :</strong>${date}</p>
+        <p><strong>Description :</strong>${description}</p>
+      </div>
+    `;
+  });
+  taskForm.classList.toggle("hidden");
 });

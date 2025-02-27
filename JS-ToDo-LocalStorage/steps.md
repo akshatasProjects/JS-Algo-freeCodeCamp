@@ -37,6 +37,18 @@ Within the arrow function, check if the id property of item is strictly equal to
 
 Add a new task and open up the console to see the taskObj object with the new properties.
 
+13. Now that you have obtained the values from the input fields and generated an id, you want to add them to your taskData array to keep track of each task. However, you should only do this if the task is new. If the task already exists, you will set it up for editing. This is why you have the dataArrIndex variable, which provides the index of each task.
+
+Create an if statement with the condition dataArrIndex === -1. Within the if statement, use the unshift() method to add the taskObj object to the beginning of the taskData array.
+
+14. Using arrow syntax complete the forEach callback function. Inside the callback function body use an addition assignment to set the innerHTML of tasksContainer to empty backticks.
+
+15. Create a div element with the class of task. Utilize template strings to set the id attribute of the div to the id you destructured from the task data.
+
+16. To allow for task management, you need to include both a delete and an edit button for each task.
+
+Create two button elements with the type attribute set to button and the class attribute set to btn. Set the text of the first button to Edit and the text of the second button to Delete.
+
 ### Notes
 
 - What is localStorage?
@@ -58,3 +70,17 @@ Add a new task and open up the console to see the taskObj object with the new pr
 
 - To make the id more unique, add another hyphen and use Date.now().
   Date.now() returns the number of milliseconds elapsed since January 1, 1970 00:00:00 UTC
+
+- unshift() is an array method that is used to add one or more elements to the beginning of an array.
+
+- array.forEach(function(element, index, array))
+  When to Use forEach()
+  ✅ When you need to execute a function on each array element
+  ✅ When you don’t need to modify the original array
+  ✅ When you don’t need to return a new array (unlike map())
+  ✅ When working with side effects like logging, updating the DOM, or modifying external variables
+
+When NOT to Use forEach()
+❌ If you need to return a modified array – Use .map() instead
+❌ If you need to stop or break the loop early – Use for or for...of instead
+❌ If you need to work asynchronously – Use for...of with async/await instead
