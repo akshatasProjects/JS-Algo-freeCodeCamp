@@ -47,12 +47,23 @@ const decimalToBinary = (input) => {
   */
 
 //--------------- RECURSSION FUNCTION
-const countdown = (number) => {
+/* const countDownAndUp = (number) => {
   console.log(number);
 
   if (number === 0) {
+    console.log("Reached base case");
     return;
   } else {
-    countdown(number - 1);
+    countDownAndUp(number - 1);
+    console.log(number);
   }
-};
+}; */
+
+// REFACTOR TO WHILE LOOP
+if (input === 0 || input === 1) {
+  return String(input);
+} else {
+  return decimalToBinary(Math.floor(input / 2)) + (input % 2);
+}
+
+result.textContent = decimalToBinary(parseInt(numberInput.value));
