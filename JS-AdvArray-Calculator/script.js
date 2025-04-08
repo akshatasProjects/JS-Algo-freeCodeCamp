@@ -40,19 +40,32 @@ Arrays have another method, called .reduce(), which is perfect for
 this situation. The .reduce() method takes an array and applies 
 a callback function to condense the array into a single value.
 
+- The .reduce() method takes a second argument that is used as the initial value of the accumulator. Without a second argument, the .reduce() method uses the first element of 
+the array as the accumulator, which can lead to unexpected results.
+
+----------- CALCULATE MEAN
+The next step in calculating the mean is to divide the 
+sum of numbers by the count of numbers in the list.
+
+------- MEDIAN CALCULATION
+Time to start working on the median calculation. 
+The median is the midpoint of a set of numbers.
+
+The first step in calculating the median is to ensure the list 
+of numbers is sorted from least to greatest. Use sort()
 
 */
 
 const calculator = () => {
   const value = document.querySelector("#numbers").value;
   const array = value.split(/,\s*/g);
-  const numbers = array
-    .map((el) => Number(el))
-    .filter((el) => {
-      return !isNaN(el);
-    });
+  const numbers = array.map((el) => Number(el)).filter((el) => !isNaN(el));
+  const mean = getMean(numbers);
 };
 
-const getMean = (array) => {
-  const sum = array.reduce();
+const getMean = (array) =>
+  array.reduce((acc, el) => acc + el, 0) / array.length;
+
+const getMedian = (array) => {
+  const sorted = array.sort();
 };
